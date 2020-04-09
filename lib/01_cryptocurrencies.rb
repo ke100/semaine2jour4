@@ -7,17 +7,22 @@ k = ["Bitcoin", "Ethereum", "XRP", "Bitcoin Cash", "EOS", "Litecoin", "Cardano",
  "$0.042993", "$0.000325", "$0.000271", "$0.002799", "$0.071591", "$1.17", "$0.001171", "$0.000651", "$0.000195", "$0.001562", "$0.008721", "$0.000065", "$0.000130", "$0.002473", "$0.000065", "$0.000325", "$0.656235", "$0.000254", "$0.000518", "$0.000065", "$0.054733", "$9.85", "$0.000520", "$0.000259", "$0.003288", "$0.006578", "$0.004273", "$0.024932", "$0.011394"]
 
 my_hash = Hash[k.zip(v)]
-
-puts my_hash 
-puts my_hash.key(my_hash.values.min)
-
 v = v.map{|i| i.delete("$").to_f}
 cp = Hash[k.zip(v.map)]
 kcoin = 0
+moins6k = {}
+
 for i in (0..k.length)
     if (/coin/.match("#{k[i]}"))
         kcoin += 1
     end 
 end
+
+
+puts my_hash 
+puts "Les crypto qui ont les plus petites valeurs :"
+puts Hash[cp.sort_by{|k, i| i}[0..4]]
+puts "Les crypto qui ont les plus grosses valeurs :"
 puts Hash[cp.sort_by{|k, i| -i}[0..4]]
+puts "Le nombre de crypto contenant le mot 'coin' :"
 puts kcoin
