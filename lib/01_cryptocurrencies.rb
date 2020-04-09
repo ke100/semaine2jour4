@@ -18,7 +18,6 @@ for i in (0..k.length)
     end 
 end
 
-
 puts my_hash 
 puts "Les crypto qui ont les plus petites valeurs :"
 puts Hash[cp.sort_by{|k, i| i}[0..4]]
